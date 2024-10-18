@@ -2,8 +2,7 @@ package main.task;
 
 import java.util.List;
 
-import static main.task.FirstUnique.findByMethod1;
-import static main.task.FirstUnique.findByMethod2;
+import static main.task.FirstUnique.*;
 
 public class FirstUniqueTests {
 
@@ -18,6 +17,13 @@ public class FirstUniqueTests {
         System.out.println("Исходная коллекция = " + list);
         findByMethod1(list);
         System.out.println("Method2: результат выполнения = " + findByMethod1(list));
+        System.out.println();
+    }
+
+    public static void findByMethod3Test(List<Integer> list) {
+        System.out.println("Исходная коллекция = " + list);
+        findByMethod1(list);
+        System.out.println("Method3: результат выполнения = " + findByMethod1(list));
         System.out.println();
     }
 
@@ -40,6 +46,12 @@ public class FirstUniqueTests {
         endTime = System.currentTimeMillis();
         System.out.println(findByMethod2(list));
         System.out.println("Method2: время выполнения = " + (endTime - startTime) + "мс");
+        for (int i = 0; i <= interval; i++) {
+            findByMethod3(list);
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println(findByMethod2(list));
+        System.out.println("Method3: время выполнения = " + (endTime - startTime) + "мс");
         System.out.println();
     }
 

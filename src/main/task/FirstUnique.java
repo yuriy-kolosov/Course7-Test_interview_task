@@ -1,8 +1,8 @@
 package main.task;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
+
+import static java.util.Objects.requireNonNullElse;
 
 public class FirstUnique {
 
@@ -64,6 +64,29 @@ public class FirstUnique {
         resultList.removeAll(doublesList);
 
         return resultList.isEmpty() ? null : resultList.get(0);
+    }
+
+    public static <T> Optional<T> findByMethod3(Collection<T> sourseCollection) {
+
+        sourseCollection = requireNonNullElse(sourseCollection, new ArrayList<>());
+
+        Set<T> uniqueCollection = new LinkedHashSet<>();
+        Set<T> doublesCollection = new HashSet<>();
+
+        for (T object : sourseCollection) {
+            if (doublesCollection.contains(object)) {
+                continue;
+            }
+            if (uniqueCollection.contains(object)) {
+                uniqueCollection.remove(object);
+                doublesCollection.add((object));
+                continue;
+            }
+            uniqueCollection.add(object);
+        }
+
+        return uniqueCollection.stream().findFirst();
+
     }
 
 }
